@@ -25,31 +25,31 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: 'Home',
-    url: '/page/Inbox',
+    url: '/page/Home',
     iosIcon: homeOutline,
     mdIcon: home
   },
   {
     title: 'Add numbers',
-    url: '/page/Outbox',
+    url: '/page/AddNumbers',
     iosIcon: addCircleOutline,
     mdIcon: addCircle
   },
   {
     title: 'Translate',
-    url: '/page/Favorites',
+    url: '/page/Translate',
     iosIcon: languageOutline,
     mdIcon: language
   },
   {
     title: 'Multiplication',
-    url: '/page/Archived',
+    url: '/page/Multiplication',
     iosIcon: calculatorOutline,
     mdIcon: calculator
   },
   {
     title: 'Video',
-    url: '/page/Trash',
+    url: '/page/VideoDisplay',
     iosIcon: videocam,
     mdIcon: videocam
   }
