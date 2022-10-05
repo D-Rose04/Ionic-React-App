@@ -1,0 +1,19 @@
+.label{
+    text-align: center;
+}
+
+.profileContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#profile{
+    /* border: 1px solid red; */
+    overflow: hidden;
+    border-radius: 50%;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 30px 0;
+}
