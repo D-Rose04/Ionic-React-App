@@ -11,8 +11,9 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { addCircle, addCircleOutline, calculator, calculatorOutline, home, homeOutline, language, languageOutline, videocam} from 'ionicons/icons';
 import './Menu.css';
+import React from 'react';
 
 interface AppPage {
   url: string;
@@ -23,44 +24,36 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Inbox',
+    title: 'Home',
     url: '/page/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: homeOutline,
+    mdIcon: home
   },
   {
-    title: 'Outbox',
+    title: 'Add numbers',
     url: '/page/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    iosIcon: addCircleOutline,
+    mdIcon: addCircle
   },
   {
-    title: 'Favorites',
+    title: 'Translate',
     url: '/page/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    iosIcon: languageOutline,
+    mdIcon: language
   },
   {
-    title: 'Archived',
+    title: 'Multiplication',
     url: '/page/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
+    iosIcon: calculatorOutline,
+    mdIcon: calculator
   },
   {
-    title: 'Trash',
+    title: 'Video',
     url: '/page/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/page/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
+    iosIcon: videocam,
+    mdIcon: videocam
   }
 ];
-
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -81,16 +74,6 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
-        </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
         </IonList>
       </IonContent>
     </IonMenu>
