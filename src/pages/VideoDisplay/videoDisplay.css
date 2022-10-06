@@ -1,0 +1,7 @@
+.videoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50% 0 50% 0;
+}
