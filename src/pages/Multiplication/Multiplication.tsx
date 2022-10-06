@@ -7,13 +7,13 @@ import './Multiplication.css';
 
 const Multiplication = () => {
   const [Value, SetValue] = useState<TableOperation>({ result: [] });
-  const [number,SetNumber] = useState<number>(0);
+  const [number, SetNumber] = useState<number>(0);
 
   const Multiply = (value: number, times: number): Array<Number> => {
     SetValue({ ...Value, result: [] });
     let results = [];
     for (let i = 1; i < times + 1; i++) {
-      results.push(i  * value)
+      results.push(i * value)
     }
     return results;
   }
@@ -36,13 +36,15 @@ const Multiplication = () => {
         </IonItem>
         <IonButton expand="block" onClick={() => SetValue({ ...Value, result: Multiply(number, 14) })}>Submit</IonButton>
         <IonList>
-          {Value.result.map((result,index) => {
-            return (
-              <IonItem>
-                <IonLabel>{number} X {index + 1} = {result.toString()}</IonLabel>
-              </IonItem>
-            )
-          })}
+          {number > 0 ?
+            Value.result.map((result, index) => {
+              return (
+                <IonItem>
+                  <IonLabel>{number} X {index + 1} = {result.toString()}</IonLabel>
+                </IonItem>
+              )
+            }) : <></>
+          }
         </IonList>
       </IonContent>
 
