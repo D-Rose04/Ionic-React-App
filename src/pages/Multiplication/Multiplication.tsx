@@ -1,4 +1,4 @@
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonContent, IonInput, IonItem, IonLabel, IonList } from '@ionic/react';
+import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonContent, IonInput, IonItem, IonLabel, IonList, InputChangeEventDetail } from '@ionic/react';
 import React, { useState } from 'react';
 import { TableOperation } from '../../interfaces/TableOpeartion';
 import { TwoNumberOperation } from '../../interfaces/TwoNumberOperation';
@@ -8,6 +8,7 @@ import './Multiplication.css';
 const Multiplication = () => {
   const [Value, SetValue] = useState<TableOperation>({ result: [] });
   const [number, SetNumber] = useState<number>(0);
+  const [calc, setCalc] = useState<boolean>(false);
 
   const Multiply = (value: number, times: number): Array<Number> => {
     SetValue({ ...Value, result: [] });
@@ -16,6 +17,16 @@ const Multiplication = () => {
       results.push(i * value)
     }
     return results;
+  }
+
+  const handleChange = (event: CustomEvent<InputChangeEventDetail>) => {
+    if (calc) setCalc(false);
+    SetNumber(Number(event.detail.value?.toString()));
+  }
+
+  const handleSubmit = (event: React.MouseEvent<HTMLIonButtonElement>) => {
+    SetValue({ ...Value, result: Multiply(number, 14) });
+    setCalc(true);
   }
 
   return (
@@ -32,11 +43,11 @@ const Multiplication = () => {
       <IonContent>
         <IonItem>
           <IonLabel position="floating">Enter a number:</IonLabel>
-          <IonInput id="a" required clearInput type='number' onIonChange={(e) => SetNumber(Number(e.target.value?.toString()))}></IonInput>
+          <IonInput id="a" required clearInput type='number' onIonChange={(e) => handleChange(e)}></IonInput>
         </IonItem>
-        <IonButton expand="block" onClick={() => SetValue({ ...Value, result: Multiply(number, 14) })}>Submit</IonButton>
+        <IonButton expand="block" onClick={(e) => handleSubmit(e)}>Submit</IonButton>
         <IonList>
-          {number > 0 ?
+          {number > 0 && calc ?
             Value.result.map((result, index) => {
               return (
                 <IonItem>
